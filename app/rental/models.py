@@ -10,17 +10,20 @@ class Tenant(models.Model):
     contact=models.CharField(max_length=50)
     email=models.CharField(max_length=50,null=True,blank=True)
 
-    account_sid = 'ACa919fcc9e19f6a845d0b4ba32f9a58a7'
-    auth_token = 'a9bb1a8cda45fca2b958c04b6cb5a3f5'
-    client = Client(account_sid, auth_token)
 
-    message = client.messages.create(
-                     body= 'Join Earths mightiest heroes Like Kevin Bacon.',
+    def __str__(self):
+        account_sid = 'ACa919fcc9e19f6a845d0b4ba32f9a58a7'
+        auth_token = 'a9bb1a8cda45fca2b958c04b6cb5a3f5'
+        client = Client(account_sid, auth_token)
+
+        message = client.messages.create(
+                     body= f'Join Earths mightiest{self.lastname} heroes Like Kevin Bacon.',
                      from_='+16203250372',
                      to='+256705082827'
                  )
 
-    print(message.sid)
+        print(message.sid)
+   
 
     class Meta:
         verbose_name = ("Tenant")
