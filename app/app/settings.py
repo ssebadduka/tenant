@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-6^q7^3y6i*^gv39tjs!3s3zhizgd3sg@=)1#8t*+#i*iada8!b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bitijuma.desta-auto.com','*']
 
 
 # Application definition

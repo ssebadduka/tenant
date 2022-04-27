@@ -5,7 +5,7 @@ from .models import Tenant,Room,Contract,Property,Payment
 @admin.register(Payment)
 # admin.site.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ('tenant', 'contract','date_paid','monthly_rent_due','amount_paid','Balance','receipt_number','date_paid')
+    list_display = ('tenant','date_paid','amount_paid','paid_from','paid_to','Balance','receipt_number')
 
 # Register your models here.
 admin.site.register(Tenant)

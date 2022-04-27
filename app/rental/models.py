@@ -98,16 +98,49 @@ class Contract(models.Model):
 class Payment(models.Model):
     def random_string():
         return str(random.randint(10000, 99999))
+    PAYMONTH_TYPE_CHOICES=[
+        ('January','January'),
+        (' February',' February'),
+        (' March',' March'),
+        (' April',' April'),
+        (' May',' May'),
+        (' June',' June'),
+        (' July',' July'),
+        (' August',' August'),
+        (' September',' September'),
+        (' October',' October'),
+        (' November',' November'),
+        (' December',' December'),
+    ]
+    # PAYMONTHs_TYPE_CHOICES=[
+    #     ('January','January'),
+    #     (' February',' February'),
+    #     (' March',' March'),
+    #     (' April',' April'),
+    #     (' May',' May'),
+    #     (' June',' June'),
+    #     (' July',' July'),
+    #     (' August',' August'),
+    #     (' September',' September'),
+    #     (' October',' October'),
+    #     (' November',' November'),
+    #     (' December',' December'),
+    # ]
     
     tenant= models.ForeignKey(Tenant,on_delete=models.CASCADE,
     null=True,blank=True,related_name='tenant_name')
+    amount_paid= models.IntegerField()
+    paid_from=models.CharField(choices=PAYMONTH_TYPE_CHOICES,default='January',max_length=50)
+    paid_to=models.CharField(choices=PAYMONTH_TYPE_CHOICES,default='January',max_length=50)
+    Balance= models.IntegerField()
+    date_paid = models.DateField()
     contract= models.ForeignKey(Contract,on_delete=models.CASCADE,
     null=True,blank=True,related_name='contract_name')
-    date_paid = models.DateField()
+    
     monthly_rent_due= models.ForeignKey(Contract,on_delete=models.CASCADE,
     null=True,blank=True,related_name='Due_Rent')
-    amount_paid= models.IntegerField()
-    Balance= models.IntegerField()
+    
+    
     receipt_number =  models.CharField(default = random_string,max_length=50,editable=False)
     
     # receipt_number= models.CharField(max_length=50)
